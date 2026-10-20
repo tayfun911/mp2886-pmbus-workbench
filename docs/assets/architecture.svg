@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">MP2886A PMBus Workbench architecture</title>
+  <desc id="desc">A desktop application communicates over USB serial with an ESP32-C3 bridge, which exchanges PMBus and I2C messages with an MP2886A controller on a separately powered host board.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#26786c"/>
+    </marker>
+    <marker id="arrow-start" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto">
+      <path d="M10 0L0 5L10 10Z" fill="#26786c"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="420" rx="18" fill="#f4f6f3"/>
+  <text x="56" y="62" fill="#1c2c2a" font-family="sans-serif" font-size="27" font-weight="700">MP2886A PMBus Workbench</text>
+  <text x="56" y="94" fill="#52615e" font-family="sans-serif" font-size="16">Desktop controls and diagnostics, carried over a small USB-to-PMBus bridge</text>
+
+  <rect x="62" y="146" width="300" height="174" rx="12" fill="#fff" stroke="#c5d2ce" stroke-width="2"/>
+  <rect x="62" y="146" width="300" height="12" rx="6" fill="#26786c"/>
+  <text x="88" y="197" fill="#1c2c2a" font-family="sans-serif" font-size="22" font-weight="700">Desktop application</text>
+  <text x="88" y="231" fill="#344542" font-family="sans-serif" font-size="16">PyQt5 interface</text>
+  <text x="88" y="258" fill="#344542" font-family="sans-serif" font-size="16">Register reads, status, telemetry</text>
+  <text x="88" y="285" fill="#344542" font-family="sans-serif" font-size="16">Explicit writes and profile checks</text>
+
+  <rect x="450" y="146" width="300" height="174" rx="12" fill="#fff" stroke="#c5d2ce" stroke-width="2"/>
+  <rect x="450" y="146" width="300" height="12" rx="6" fill="#397ea0"/>
+  <text x="476" y="197" fill="#1c2c2a" font-family="sans-serif" font-size="22" font-weight="700">ESP32-C3 bridge</text>
+  <text x="476" y="231" fill="#344542" font-family="sans-serif" font-size="16">USB serial: 115200 baud</text>
+  <text x="476" y="258" fill="#344542" font-family="sans-serif" font-size="16">I2C / PMBus master</text>
+  <text x="476" y="285" fill="#344542" font-family="sans-serif" font-size="16">Optional PEC; 100 kHz default</text>
+
+  <rect x="838" y="146" width="300" height="174" rx="12" fill="#fff" stroke="#c5d2ce" stroke-width="2"/>
+  <rect x="838" y="146" width="300" height="12" rx="6" fill="#d09037"/>
+  <text x="864" y="197" fill="#1c2c2a" font-family="sans-serif" font-size="22" font-weight="700">Target host board</text>
+  <text x="864" y="231" fill="#344542" font-family="sans-serif" font-size="16">MP2886A controller</text>
+  <text x="864" y="258" fill="#344542" font-family="sans-serif" font-size="16">Board-specific address/config</text>
+  <text x="864" y="285" fill="#344542" font-family="sans-serif" font-size="16">Powered by its own supply</text>
+
+  <path d="M370 222H437" fill="none" stroke="#26786c" stroke-width="4" marker-start="url(#arrow-start)" marker-end="url(#arrow)"/>
+  <text x="403" y="202" text-anchor="middle" fill="#52615e" font-family="sans-serif" font-size="14">USB</text>
+  <path d="M758 222H825" fill="none" stroke="#26786c" stroke-width="4" marker-start="url(#arrow-start)" marker-end="url(#arrow)"/>
+  <text x="791" y="202" text-anchor="middle" fill="#52615e" font-family="sans-serif" font-size="14">SDA / SCL</text>
+
+  <text x="600" y="368" text-anchor="middle" fill="#8c4f1b" font-family="sans-serif" font-size="16" font-weight="700">The bridge carries signals only; it does not power the target board.</text>
+</svg>
