@@ -2,6 +2,10 @@
 
 ESP32-C3 firmware and a small desktop utility for communicating with an MP2886A over PMBus/I2C. This is a general-purpose PMBus bridge, not an MPS factory configuration tool and not a replacement for an MPS-provided configuration image.
 
+![MP2886A PMBus Workbench desktop application](docs/assets/app-overview.png)
+
+*Application overview; the screenshot shows the bridge disconnected and does not represent live hardware readings.*
+
 ![Project architecture](docs/assets/architecture.svg)
 
 ![Hardware connection overview](docs/assets/connection.svg)
