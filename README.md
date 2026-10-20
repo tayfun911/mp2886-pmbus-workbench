@@ -6,6 +6,10 @@ ESP32-C3 firmware and a small desktop utility for communicating with an MP2886A 
 
 *Application overview; the screenshot shows the bridge disconnected and does not represent live hardware readings.*
 
+![MP2886A PMBus Workbench Monitor tab](docs/assets/monitor-overview.png)
+
+*Monitor overview; telemetry is shown as unavailable because no hardware sample was taken for this screenshot.*
+
 ![Project architecture](docs/assets/architecture.svg)
 
 ![Hardware connection overview](docs/assets/connection.svg)
