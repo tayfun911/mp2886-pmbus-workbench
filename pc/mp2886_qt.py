@@ -2009,21 +2009,31 @@ class MP2886Window(QMainWindow):
             if page != 0:
                 raise ValueError(f"Profil yalnızca PAGE=00h'a yazılır; cihaz şu an PAGE={page:02X}h. Sayfa değiştirilmedi.")
 
+            signature_mismatches = []
             for code, expected in signature.items():
                 actual = self._read_page_zero_register(address, code)
                 if actual != expected:
                     register = REGISTERS_BY_CODE[code]
-                    raise ValueError(
-                        f"{register.name} eşleşmiyor: dosya 0x{expected:04X}, cihaz 0x{actual:04X}. "
-                        "Farklı MP2886A yapılandırmasına ait profil uygulanmadı."
+                    signature_mismatches.append(
+                        f"{register.name}: dosya 0x{expected:04X}, cihaz 0x{actual:04X}"
                     )
 
             source_address = profile.get("source_address", "bilinmiyor")
+            if signature_mismatches:
+                signature_message = (
+                    "UYARI: CONFIG_ID / revizyon eşleşmiyor:\n"
+                    + "\n".join(signature_mismatches)
+                    + "\n\nBu profil farklı bir VR yapılandırmasına ait olabilir. "
+                    "Yalnızca hedef çipin bu kart için boş/yeni olduğundan ve profilin "
+                    "aynı kart yapılandırmasından geldiğinden eminsen devam et."
+                )
+            else:
+                signature_message = "CONFIG_ID ve revizyon eşleşti."
             answer = QMessageBox.warning(
                 self,
                 "Profili cihaza yaz",
                 f"{source.name}: {len(entries)} ayar 0x{address:02X} adresine sırayla yazılacak.\n"
-                f"Profil kaynak adresi: 0x{source_address}. CONFIG_ID ve revizyon eşleşti.\n\n"
+                f"Profil kaynak adresi: 0x{source_address}.\n{signature_message}\n\n"
                 "Yalnızca aynı anakart/VR yapılandırmasına ait olduğundan eminsen devam et. "
                 "İşlem çalışma belleğini değiştirir; hata olursa önceki yazmalar geri alınamaz. "
                 "EEPROM'a otomatik kaydetmez.",
